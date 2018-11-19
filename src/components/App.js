@@ -1,6 +1,26 @@
 import React, { Component, Fragment } from 'react';
+import reset from 'styled-reset';
+import { createGlobalStyle } from 'styled-components';
 import { getPlayer, result } from './../utils';
 import Header from './Header';
+
+/** Set default styles */
+const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+  
+  ${reset}
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body{
+    background-color: #eef2f5;
+    color: rgba(1, 22, 39, 0.8);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.4;
+  }
+`;
 
 class App extends Component {
   constructor(props) {
@@ -49,7 +69,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
+        <GlobalStyle />
         <Header player={getPlayer(this.state.rounds)} />
         <p>{this.state.initialValue}</p>
         <ul>
