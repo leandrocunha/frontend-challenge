@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import InitialValue from './InitialValue';
+import Round from './Round';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -10,15 +11,9 @@ const Wrapper = styled.div`
 const Rounds = ({ initialValue, rounds }) => (
   <Wrapper>
     <InitialValue value={initialValue} />
-    <ul>
-      {rounds.map((round, index) => (
-        <li key={index}>
-          {round.player}
-          <br />
-          {`[(${round.move} - ${round.lastResult}) / 3] = ${round.result}`}
-        </li>
-      ))}
-    </ul>
+    {rounds.map((round, index) => (
+      <Round key={index} {...round} />
+    ))}
   </Wrapper>
 );
 

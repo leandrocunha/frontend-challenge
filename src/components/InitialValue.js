@@ -12,7 +12,7 @@ const InitialValueStyled = styled.p`
   font-weight: 700;
   height: 50px;
   justify-content: center;
-  margin: 0 10px;
+  margin: 0 10px 20px 10px;
   width: 50px;
 `;
 

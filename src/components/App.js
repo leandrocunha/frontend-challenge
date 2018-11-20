@@ -12,9 +12,7 @@ const GlobalStyle = createGlobalStyle`
   
   ${reset}
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   body{
     background-color: #eef2f5;
@@ -22,6 +20,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     line-height: 1.4;
   }
+
+  strong { font-weight: 700; }
 
   #root {
     display: flex;
