@@ -20,6 +20,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     line-height: 1.4;
   }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+  }
 `;
 
 class App extends Component {
@@ -69,25 +76,29 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <GlobalStyle />
         <Header player={getPlayer(this.state.rounds)} />
-        <p>{this.state.initialValue}</p>
-        <ul>
-          {this.state.rounds.map((round, index) => (
-            <li key={index}>
-              {round.player}
-              <br />
-              {`[(${round.move} - ${round.lastResult}) / 3] = ${round.result}`}
-            </li>
-          ))}
-        </ul>
+        <div>
+          <p>{this.state.initialValue}</p>
+          <ul>
+            {this.state.rounds.map((round, index) => (
+              <li key={index}>
+                {round.player}
+                <br />
+                {`[(${round.move} - ${round.lastResult}) / 3] = ${
+                  round.result
+                }`}
+              </li>
+            ))}
+          </ul>
+        </div>
         {this.state.lastResult > 1 && (
-          <Fragment>
+          <div>
             <button onClick={() => this.play(-1)}>-1</button>
             <button onClick={() => this.play(0)}>0</button>
             <button onClick={() => this.play(1)}>1</button>
-          </Fragment>
+          </div>
         )}
 
         {this.state.lastResult === 0 && (
@@ -99,7 +110,7 @@ class App extends Component {
             this.state.rounds[this.state.rounds.length - 1].player
           } winner`}</p>
         )}
-      </div>
+      </Fragment>
     );
   }
 }
