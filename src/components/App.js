@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 import { getPlayer, result } from './../utils';
 import Header from './Header';
 import Moves from './Moves';
+import Rounds from './Rounds';
 
 /** Set default styles */
 const GlobalStyle = createGlobalStyle`
@@ -80,20 +81,10 @@ class App extends Component {
       <Fragment>
         <GlobalStyle />
         <Header player={getPlayer(this.state.rounds)} />
-        <div>
-          <p>{this.state.initialValue}</p>
-          <ul>
-            {this.state.rounds.map((round, index) => (
-              <li key={index}>
-                {round.player}
-                <br />
-                {`[(${round.move} - ${round.lastResult}) / 3] = ${
-                  round.result
-                }`}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Rounds
+          initialValue={this.state.initialValue}
+          rounds={this.state.rounds}
+        />
         {this.state.lastResult > 1 && <Moves move={this.play} />}
 
         {this.state.lastResult === 0 && (
