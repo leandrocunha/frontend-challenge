@@ -3,6 +3,7 @@ import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
 import { getPlayer, result } from './../utils';
 import Header from './Header';
+import Moves from './Moves';
 
 /** Set default styles */
 const GlobalStyle = createGlobalStyle`
@@ -93,13 +94,7 @@ class App extends Component {
             ))}
           </ul>
         </div>
-        {this.state.lastResult > 1 && (
-          <div>
-            <button onClick={() => this.play(-1)}>-1</button>
-            <button onClick={() => this.play(0)}>0</button>
-            <button onClick={() => this.play(1)}>1</button>
-          </div>
-        )}
+        {this.state.lastResult > 1 && <Moves move={this.play} />}
 
         {this.state.lastResult === 0 && (
           <button onClick={() => (window.location.href = '/')}>restart</button>
