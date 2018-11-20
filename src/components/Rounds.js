@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import InitialValue from './InitialValue';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -8,7 +9,7 @@ const Wrapper = styled.div`
 
 const Rounds = ({ initialValue, rounds }) => (
   <Wrapper>
-    <p>{initialValue}</p>
+    <InitialValue value={initialValue} />
     <ul>
       {rounds.map((round, index) => (
         <li key={index}>

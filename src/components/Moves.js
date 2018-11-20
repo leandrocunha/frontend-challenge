@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 `;
 
 const Button = styled.button`
-  align: center;
+  align-items: center;
   background-color: #00adff;
   border: none;
   border-radius: 100px;
