@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
-import { getPlayer, result } from './../utils';
+import { getPlayer, random, result } from './../utils';
 import Header from './Header';
 import Modal from './Modal';
 import Moves from './Moves';
@@ -46,12 +46,8 @@ class App extends Component {
     this.start();
   }
 
-  random(limit) {
-    return Math.floor(Math.random() * limit);
-  }
-
   start() {
-    const initialValue = this.random(100);
+    const initialValue = random(100);
     this.setState({ initialValue, lastResult: initialValue });
   }
 
@@ -72,7 +68,7 @@ class App extends Component {
     this.round(1, value, r);
 
     setTimeout(() => {
-      const value = this.options[this.random(3)];
+      const value = this.options[random(3)];
       const r = result(value, this.state.lastResult);
       this.round(0, value, r);
     }, 1000);
