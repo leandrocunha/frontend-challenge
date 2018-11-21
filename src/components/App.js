@@ -3,6 +3,7 @@ import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
 import { getPlayer, result } from './../utils';
 import Header from './Header';
+import Modal from './Modal';
 import Moves from './Moves';
 import Restart from './Restart';
 import Rounds from './Rounds';
@@ -35,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { rounds: [] };
+    this.state = { lastResult: 0, rounds: [] };
     this.play = this.play.bind(this);
     this.start = this.start.bind(this);
     this.options = [-1, 0, 1];
@@ -87,14 +88,8 @@ class App extends Component {
           rounds={this.state.rounds}
         />
         {this.state.lastResult > 1 && <Moves move={this.play} />}
-
         {this.state.lastResult === 0 && <Restart />}
-
-        {this.state.lastResult === 1 && (
-          <p>{`Player ${
-            this.state.rounds[this.state.rounds.length - 1].player
-          } winner`}</p>
-        )}
+        {this.state.lastResult === 1 && <Modal />}
       </Fragment>
     );
   }
