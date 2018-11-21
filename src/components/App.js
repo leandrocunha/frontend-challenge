@@ -36,21 +36,42 @@ const GlobalStyle = createGlobalStyle`
 class App extends Component {
   constructor(props) {
     super(props);
+
+    /** Set state with default values.
+     * @param {number} lastResult
+     * @param {Array} rounds
+     */
     this.state = { lastResult: 0, rounds: [] };
+
+    /** Bind function to do one move. */
     this.play = this.play.bind(this);
+
+    /** Bind function to start game. */
     this.start = this.start.bind(this);
+
+    /** Set possibilities to play. */
     this.options = [-1, 0, 1];
   }
 
   componentDidMount() {
+    /** Start game */
     this.start();
   }
 
+  /**
+   * @function start Start game setting a random initial value on local state.
+   */
   start() {
     const initialValue = random(100);
     this.setState({ initialValue, lastResult: initialValue });
   }
 
+  /**
+   * @function round Build round push it to local state.
+   * @param {number} player The number to represent the player that make the move.
+   * @param {number} move The number that will be used in mathematical formula.
+   * @param {number} result The number to be set as last result in local state.
+   */
   round(player, move, result) {
     const round = {
       player,
@@ -63,6 +84,10 @@ class App extends Component {
     this.setState({ lastResult: result, round: this.state.round });
   }
 
+  /**
+   * @function play Pass one int possibility to get result an call round of the "bot" :)
+   * @param {number} value The number of move to be calculated.
+   */
   play(value) {
     const r = result(value, this.state.lastResult);
     this.round(1, value, r);
