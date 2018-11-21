@@ -40,7 +40,7 @@ const Modal = () => (
   <ModalStyled>
     <Balloons />
     <Title>You Lose</Title>
-    <Button>New game</Button>
+    <Button onClick={() => (window.location.href = '/')}>New game</Button>
   </ModalStyled>
 );
 
