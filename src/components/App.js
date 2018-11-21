@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 import { getPlayer, result } from './../utils';
 import Header from './Header';
 import Moves from './Moves';
+import Restart from './Restart';
 import Rounds from './Rounds';
 
 /** Set default styles */
@@ -87,9 +88,7 @@ class App extends Component {
         />
         {this.state.lastResult > 1 && <Moves move={this.play} />}
 
-        {this.state.lastResult === 0 && (
-          <button onClick={() => (window.location.href = '/')}>restart</button>
-        )}
+        {this.state.lastResult === 0 && <Restart />}
 
         {this.state.lastResult === 1 && (
           <p>{`Player ${
